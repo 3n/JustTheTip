@@ -18,6 +18,8 @@ You can add elements to a given JustTheTip instance whenever you want.
 
 You can also turn tips on/off for a given element at your discretion. 
 
+![Screenshot](http://idisk.me.com/iancollins/Public/Pictures/Skitch/Picture_1-20091011-143400.png)
+
 How to use
 ----------
 
@@ -112,4 +114,11 @@ Events
 									JustTheTip
   * tipHidden   : The function to execute when the tip element is hidden.
 								  Gets passed the tip element, the element that triggered the showing, and the instance of
-									JustTheTip 
+									JustTheTip
+									
+Screenshots
+-----------
+
+Tip that opens immediately above the clicked element (image enlarging)
+
+![Screenshot](http://idisk.me.com/iancollins/Public/Pictures/Skitch/Picture_2-20091011-143804.png)
