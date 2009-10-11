@@ -1,8 +1,8 @@
 /*=
 name: JustTheTip
-description: Tool-tip class that allows for arbitrary HTML and provides lots of events to hook into.
-@requires more/1.2.3.1 Class.Binds Element.Position
+description: 
 @requires core/1.2.3 Class.Extras Element.Event Element.Style Selectors
+@requires more/1.2.3.1 Class.Binds Element.Position
 @provides JustTheTip
 =*/
 

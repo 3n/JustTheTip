@@ -1,9 +1,9 @@
 --- 
-:current: 1.0
-:name: JustTheTip
-:author: 3n
-:website: http://www.iancollins.me
-:tags: 
+name: JustTheTip
+category: Interface
+tags: 
 - tooltip
-:contact: ian.collins@gmail.com
-:category: Interface
+current: 1.0
+author: 3n
+contact: ian.collins@gmail.com
+website: http://www.iancollins.me
