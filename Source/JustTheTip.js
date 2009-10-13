@@ -1,10 +1,19 @@
-/*=
-name: JustTheTip
-description: 
-@requires core/1.2.3 Class.Extras Element.Event Element.Style Selectors
-@requires more/1.2.3.1 Class.Binds Element.Position
-@provides JustTheTip
-=*/
+/*
+--- 
+provides: 
+- JustTheTip
+license: MIT-style
+requires: 
+- core:1.2.3/Class.Extras
+- core:1.2.3/Element.Event
+- core:1.2.3/Element.Style
+- core:1.2.3/Selectors
+- more:1.2.3.1/Class.Binds
+- more:1.2.3.1/Element.Position
+authors: 
+- 3n
+...
+*/
 
 var JustTheTip = new Class({
 	Implements: [Options, Events],
