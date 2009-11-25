@@ -1,7 +1,7 @@
 JustTheTip
 ==========
 
-Highly customizable Tool-tip class that allows for arbitrary and dynamic tip
+Highly customizable Tool-tip Mootools class that allows for arbitrary and dynamic tip
 HTML and provides lots of events to hook into for tip showing/hiding/placement.
 
 Each instance of JustTheTip creates only one element and positions it
@@ -37,12 +37,17 @@ basic one:
 			
 		onTipShown: function(tip,elem,jtt){
 				tip.set('html', elem.get('html') + " tip");
+		},
+		
+		shouldShowTip: function(elem){
+			return elem.get('html').test(/brawndo/);
 		}
 	});
 	
 This instance of JustTheTip will cause the following to happen: All elements with 
 the class 'needs-tip', when mouseenter'd, will get a tooltip at their bottom-left
-whose contents are the same as the hovered element, plus " tip". The tip will 
+whose contents are the same as the hovered element, plus " tip". But only if the 
+element's html contains the string "brawndo". The tip will 
 start to fade in immediately, but will start to fade out only after the mouse has 
 left the tip & element for 100 miliseconds.
 
@@ -103,6 +108,8 @@ Options
   * position : (string or object) Position of the tip relative to its element. A string that follows 
 							 the conventions of Element.Position. If you wish to specify the position and the edge, 
 							 pass an object with both key/value pairs. Defaults to { 'position': 'upperRight', 'edge': 'upperLeft' }.
+	* shouldShowTip : (function) a function that is passed the current hovered element and returns a boolean. If
+										true is returned the tip will show, otherwise it will be ignored for this element.
 
 Events
 ------
