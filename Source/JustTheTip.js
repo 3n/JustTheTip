@@ -1,20 +1,20 @@
 /*
 --- 
 provides: 
- - JustTheTip
+- JustTheTip
 license: MIT-style
 requires: 
   core/1.2.3: 
-   - Class.Extras
-   - Element.Event
-   - Element.Style
-   - Selectors
+  - Class.Extras
+  - Element.Event
+  - Element.Style
+  - Selectors
   more/1.2.3.1: 
-   - Class.Binds
-   - Element.Position
+  - Class.Binds
+  - Element.Position
 description: Tool-tip class that allows for arbitrary HTML and provides lots of events to hook into.
 authors: 
- - 3n
+- 3n
 ...
 */
 
