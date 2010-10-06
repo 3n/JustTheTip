@@ -1,20 +1,20 @@
 /*
 --- 
+authors: 
+- 3n
 provides: 
 - JustTheTip
-license: MIT-style
 requires: 
+  more/1.2.3.1: 
+  - Class.Binds
+  - Element.Position
   core/1.2.3: 
   - Class.Extras
   - Element.Event
   - Element.Style
   - Selectors
-  more/1.2.3.1: 
-  - Class.Binds
-  - Element.Position
+license: MIT-style
 description: Tool-tip class that allows for arbitrary HTML and provides lots of events to hook into.
-authors: 
-- 3n
 ...
 */
 
@@ -34,6 +34,7 @@ var JustTheTip = new Class({
 		tip_leave  : 'mouseleave',
 		fade_in_duration  : 0,
 		fade_out_duration : 0,
+		click_away_hide : false,
     position : { 'position': 'upperRight', 'edge': 'upperLeft' },
     shouldShowTip: function(elem){
       return true;
@@ -64,7 +65,7 @@ var JustTheTip = new Class({
 		[this.options.tip_leave].flatten().each(function(tl){
 			this.the_tip.addEvent(tl, this._tip_leave.bind(this));
 		}, this);
-			
+		
 		this.is_it_in_yet = false;
 		this.attach_events();
 		
@@ -91,6 +92,12 @@ var JustTheTip = new Class({
 			  elem.store('just-the-tip-events', $merge(elem.retrieve('just-the-tip-events') || {}, events_obj));					
 			}, this);
 		}.bind(this));
+
+		this._click_away = function(e){
+		  if (this._is_tip_shown() && e.target != this.the_tip && !$(e.target).getParents().contains(this.the_tip)){
+	      this.hide_tip();
+	    }
+		}.bind(this);
 	},
 	detach_events: function(elements){
 	  var elements = elements || this.elements;
@@ -99,6 +106,10 @@ var JustTheTip = new Class({
         elem.removeEvent(k,v);
       });
 		}.bind(this));
+		
+		if (this.options.click_away_hide){
+		  $(document.body).removeEvent('click', this._click_away);
+		}
 	},
 	
 	_get_position: function(){
@@ -108,17 +119,25 @@ var JustTheTip = new Class({
 	    return this.options.position;
 	},
 	
+	_is_tip_shown: function(){
+	  return this.the_tip && this.the_tip.getStyle('display') != 'none';
+	},
 	_show_tip: function(){
 	  this.the_tip.setStyle('display', 'block');
 	},
 	show_tip: function(elem){
 	  if (!this.options.shouldShowTip(elem)) return;
+	  if (elem == this.current_element && this._is_tip_shown()) return;
+	  
+	  if (elem != this.current_element && this._is_tip_shown()){
+	    this.hide_tip();
+	  }
 	  
 		this.current_element = elem;
 		[this.options.hide_event].flatten().each(function(he){
 			this.current_element.addEvent(he, this.hide_tip);
 		}, this);
-		
+				
 		$clear(this.timer);
 		this.timer = (function(){
 			if (elem.retrieve('just_the_tip_on')){
@@ -132,6 +151,10 @@ var JustTheTip = new Class({
 				} else
 				  this._show_tip();
         this.the_tip.position( $merge({relativeTo: elem, ignoreScroll: true}, this._get_position()) );        
+
+        if (this.options.click_away_hide){
+          $(document.body).addEvent.delay(1, $(document.body), ['click', this._click_away]);
+    		}
 			}
 		}).delay(this.options.show_delay, this);
 	},	
@@ -156,6 +179,10 @@ var JustTheTip = new Class({
           this._hide_tip();
 			}
 		}).delay(this.options.hide_delay, this);
+		
+		if (this.options.click_away_hide){
+		  $(document.body).removeEvent('click', this._click_away);
+		}
 	},
 	
 	add_element: function(elem){
