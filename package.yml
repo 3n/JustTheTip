@@ -7,3 +7,5 @@ tags:
 category: Interface
 current: 1.0
 name: JustTheTip
+sources:
+  - Source/JustTheTip.js
