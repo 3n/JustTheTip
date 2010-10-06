@@ -1,11 +1,12 @@
 --- 
-author: 3n
-website: http://www.iancollins.me
-contact: ian.collins@gmail.com
+name: "JustTheTip"
+description: "Highly customizable Tool-tip Mootools class that allows for arbitrary and dynamic tip HTML and provides lots of events to hook into for tip showing/hiding/placement."
+author: "3n"
+website: "http://www.iancollins.me"
+contact: "ian.collins@gmail.com"
 tags: 
-- tooltip
-category: Interface
-current: 1.0
-name: JustTheTip
+  - "tooltip"
+category: "Interface"
+current: "1.0"
 sources:
-  - Source/JustTheTip.js
+  - "Source/JustTheTip.js"
