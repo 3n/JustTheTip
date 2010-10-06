@@ -1,20 +1,25 @@
 /*
 --- 
-authors: 
-- 3n
-provides: 
-- JustTheTip
-requires: 
-  more/1.2.3.1: 
-  - Class.Binds
-  - Element.Position
-  core/1.2.3: 
-  - Class.Extras
-  - Element.Event
-  - Element.Style
-  - Selectors
-license: MIT-style
+name: JustTheTip
+script: JustTheTip.js
 description: Tool-tip class that allows for arbitrary HTML and provides lots of events to hook into.
+
+authors: 
+  - 3n
+
+provides: 
+  - JustTheTip
+
+requires: 
+  - More/Class.Binds
+  - More/Element.Position
+  - Core/Class.Extras
+  - Core/Element.Event
+  - Core/Element.Style
+  - Core/Selectors
+  
+license: MIT-style
+
 ...
 */
 
